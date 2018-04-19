@@ -140,3 +140,22 @@ class NabeAtsu {
 }
 
 
+fun sendMessageToClient(client: Client?, message: String?, mailer: Mailer) {
+    // TODO: 実装する
+    val personalInfo: PersonalInfo? = client?.personalInfo
+    val email: String? = personalInfo?.email
+    email.let {
+        if (message != null) {
+            mailer.sendMessage(it!!, message)
+        }
+    }
+}
+
+// コンパイル通すための諸々
+class Client (val personalInfo: PersonalInfo?)
+class PersonalInfo (val email: String?)
+
+interface Mailer {
+    fun sendMessage(email: String, message: String)
+}
+
