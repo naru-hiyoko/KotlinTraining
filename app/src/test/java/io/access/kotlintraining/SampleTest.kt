@@ -27,7 +27,14 @@ class SampleTest {
         for (i in 1..100)
         {
             val ret = fizzbuzz(i);
-            println(ret)
+            //println(ret)
         }
+
+        assertEquals("FizzBuzz", fizzbuzz(15));
+        assertEquals("Fizz", fizzbuzz(6));
+        assertEquals("Buzz", fizzbuzz(10));
+
+
+
     }
 }
