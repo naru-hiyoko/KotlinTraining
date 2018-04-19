@@ -1,4 +1,5 @@
 package io.access.kotlintraining
+import java.util.Random
 
 fun welcome() {
     println("welcome to ACCESS!")
@@ -6,8 +7,8 @@ fun welcome() {
 
 fun hello() {
     println("Hello World!")
-
 }
+
 // TODO: declare hello function
 
 fun fizzbuzz(i: Int): String {
@@ -49,6 +50,79 @@ fun power(a: Int, n: Int): Long {
     }
 
     return arr.reduce { acc, a -> acc * a }.toLong();
+}
+
+fun Int.isOdd() : Boolean {
+    return if (this % 2 == 1) {
+        return true;
+    } else {
+        return false
+    }
+}
+
+fun Int.isEven() : Boolean {
+    return if (this % 2 == 0) {
+        return true;
+    } else {
+        return false
+    }
+}
+
+interface DiceProtocol
+{
+    var n: Int
+    fun roll(): Int
+}
+
+class Dice: DiceProtocol
+{
+    override var n: Int
+    private var trialLimit = 0
+
+    internal var counter: Int = 0
+
+    var propertyWithCounter : Int = 0
+    set(value) {
+        this.counter += 1
+    }
+
+
+    constructor(n: Int)
+    {
+        this.n = n
+        println("1...")
+    }
+
+    init {
+        println("2...")
+    }
+
+    override fun roll(): Int {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (trialLimit >= 100) {
+            throw Exception("I was broken")
+        }
+        trialLimit += 1
+        return Random().nextInt(this.n) + 1;
+    }
 
 }
+
+
+class NabeAtsu {
+    var counter: Int = 0
+
+    fun next(): String {
+        this.counter += 1
+
+        if (this.counter % 3 == 0 || this.counter.toString().contains("3")) {
+            return "Aho"
+        } else {
+            return this.counter.toString()
+        }
+    }
+
+
+}
+
 

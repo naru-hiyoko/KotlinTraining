@@ -59,4 +59,56 @@ class SampleTest {
     fun testPowerFunc() {
         assertEquals(9.toLong(), power(3, 2))
     }
+
+    @Test
+    fun testIsOdd()
+    {
+        assertEquals(true, 3.isOdd())
+        assertEquals(true, 4.isEven())
+    }
+
+    @Test
+    fun testDice() {
+        var d = Dice(3)
+
+        /**
+        for (i in 0..1001) {
+            try {
+                println(d.roll())
+            } catch (e: Exception) {
+                println(e)
+                break
+            }
+        }
+        */
+
+        d = Dice(3)
+        //println(d.roll())
+
+        d.propertyWithCounter = 100
+        d.propertyWithCounter = 200
+        //println(d.counter)
+    }
+
+    @Test
+    fun testNabeatsu()
+    {
+        val n = NabeAtsu();
+
+        for (i in 1..100) {
+            val i_str = i.toString()
+            val ret = n.next()
+            if (i == 15) {
+                assertEquals("Aho", ret)
+            } else if (i == 33) {
+                assertEquals("Aho", ret)
+            } else {
+                // pass
+            }
+
+        }
+
+
+    }
+
 }
