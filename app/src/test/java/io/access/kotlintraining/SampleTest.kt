@@ -20,4 +20,14 @@ class SampleTest {
 
         hello()
     }
+
+    @Test
+    fun testFizzBuzz()
+    {
+        for (i in 1..100)
+        {
+            val ret = fizzbuzz(i);
+            println(ret)
+        }
+    }
 }
