@@ -68,27 +68,24 @@ fun Int.isEven() : Boolean {
     }
 }
 
-interface DiceProtocol
-{
+interface DiceInterface {
     var n: Int
     fun roll(): Int
 }
 
-class Dice: DiceProtocol
-{
+class Dice : DiceInterface {
     override var n: Int
     private var trialLimit = 0
 
     internal var counter: Int = 0
 
-    var propertyWithCounter : Int = 0
-    set(value) {
-        this.counter += 1
-    }
+    var propertyWithCounter: Int = 0
+        set(value) {
+            this.counter += 1
+        }
 
 
-    constructor(n: Int)
-    {
+    constructor(n: Int) {
         this.n = n
         println("1...")
     }

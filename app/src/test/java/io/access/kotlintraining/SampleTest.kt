@@ -91,8 +91,7 @@ class SampleTest {
     }
 
     @Test
-    fun testNabeatsu()
-    {
+    fun testNabeatsu() {
         val n = NabeAtsu();
 
         for (i in 1..100) {
