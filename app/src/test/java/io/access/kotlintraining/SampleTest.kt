@@ -1,5 +1,6 @@
 package io.access.kotlintraining
 
+import android.support.annotation.NonNull
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -69,45 +70,29 @@ class SampleTest {
 
     @Test
     fun testDice() {
-        var d = Dice(3)
+        var d = Dice(3, 98)
 
-        /**
-        for (i in 0..1001) {
-            try {
-                println(d.roll())
-            } catch (e: Exception) {
-                println(e)
-                break
-            }
+        try {
+            println(d.roll())
+            println(d.roll())
+            println(d.roll())
+        } catch (e: Exception) {
+            println(e)
         }
-        */
-
-        d = Dice(3)
-        //println(d.roll())
 
         d.propertyWithCounter = 100
         d.propertyWithCounter = 200
-        //println(d.counter)
+        println(d.counter)
     }
 
     @Test
     fun testNabeatsu() {
-        val n = NabeAtsu();
-
-        for (i in 1..100) {
-            val i_str = i.toString()
-            val ret = n.next()
-            if (i == 15) {
-                assertEquals("Aho", ret)
-            } else if (i == 33) {
-                assertEquals("Aho", ret)
-            } else {
-                // pass
-            }
-
-        }
-
-
+        val n = NabeAtsu(startWith = 21);
+        assertEquals(n.next(), "22")
+        assertEquals(n.next(), "Aho")
+        assertEquals(n.next(), "Aho")
     }
+
+
 
 }
