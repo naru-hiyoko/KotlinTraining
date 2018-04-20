@@ -11,6 +11,10 @@ fun hello() {
 
 // TODO: declare hello function
 
+/***
+ * FizzBuzz 問題
+ */
+
 fun fizzbuzz(i: Int): String {
     val a = if (i % 15 == 0) {
         "FizzBuzz"
@@ -25,6 +29,9 @@ fun fizzbuzz(i: Int): String {
     return a
 }
 
+/**
+ * うるう年の問題
+ * */
 fun isLeapYear(y: Int): Boolean {
     if (y % 4 == 0) {
         if (y % 100 == 0 && y % 400 != 0) {
@@ -36,6 +43,10 @@ fun isLeapYear(y: Int): Boolean {
         return false
     }
 }
+
+/**
+ * 累乗の問題
+ * */
 
 fun power(a: Int, n: Int): Long {
     if (a < 0 || n < 0) {
@@ -51,6 +62,10 @@ fun power(a: Int, n: Int): Long {
 
     return arr.reduce { acc, a -> acc * a }.toLong();
 }
+
+/**
+ * Class Extension の課題
+ * */
 
 fun Int.isOdd() : Boolean {
     return if (this % 2 == 1) {
@@ -68,85 +83,19 @@ fun Int.isEven() : Boolean {
     }
 }
 
-interface DiceInterface {
-    var n: Int
-    fun roll(): Int
-}
-
-class Dice : DiceInterface {
-    override var n: Int
-    private var trialLimit = 0
-
-    internal var counter: Int = 0
-
-    var propertyWithCounter: Int = 0
-        set(value) {
-            this.counter += 1
-        }
-
-
-    constructor(n: Int) {
-        this.n = n
-    }
-
-    constructor(n: Int, trial: Int) {
-        this.n = n
-        this.trialLimit = trial
-    }
-
-    init {
-        //
-    }
-
-    override fun roll(): Int {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        if (trialLimit >= 100) {
-            throw Exception("I was broken")
-        }
-        trialLimit += 1
-        return Random().nextInt(this.n) + 1;
-    }
-
-}
-
-
-class NabeAtsu {
-    var counter: Int = 0
-
-    constructor() {
-
-    }
-
-    constructor(startWith: Int) {
-        this.counter = startWith
-    }
-
-    fun next(): String {
-        this.counter += 1
-
-        if (isAho(this.counter)) {
-            return "Aho"
-        } else {
-            return this.counter.toString()
-        }
-    }
-
-    fun isAho(i: Int): Boolean
-    {
-        return this.counter % 3 == 0 || this.counter.toString().contains("3")
-    }
-
-
-}
-
+/**
+ * Exercise 3
+ * Null 安全の確認
+ *
+ * */
 
 fun sendMessageToClient(client: Client?, message: String?, mailer: Mailer) {
     // TODO: 実装する
-    val personalInfo: PersonalInfo? = client?.personalInfo
-    val email: String? = personalInfo?.email
-    email.let {
+    //val personalInfo: PersonalInfo? = client?.personalInfo
+    val email: String? = client?.personalInfo?.email
+    email?.let {
         if (message != null) {
-            mailer.sendMessage(it!!, message)
+            mailer.sendMessage(it, message)
         }
     }
 }
